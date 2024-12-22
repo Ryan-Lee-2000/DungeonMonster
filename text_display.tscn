@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d1cl6glfsps1i"]
+
+[node name="Text_Display" type="Label"]
+custom_minimum_size = Vector2(100, 0)
+text = "This is a text, wow so coolIt's almost as if this thing actually works as intended, but you know life doesn't always turn out the way you think it will. And when push comes to shove you will find out how difficult it is to hold on to things you hold dear.
+"
+autowrap_mode = 3
