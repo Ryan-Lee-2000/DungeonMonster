@@ -1,6 +1,8 @@
 extends Node2D
 @onready var player = $"../Player"
 @onready var tile_map = $"../TileMapLayer"
+@onready var battle_scene = $"../BattleScene"
+
 var astargrid: AStarGrid2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,10 +40,26 @@ func _process(_delta) -> void:
 		move()
 
 func move():
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	var occupied_positions = []
+	
+	for enemy in enemies:
+		if enemy == self:
+			continue
+		occupied_positions.append(tile_map.local_to_map(enemy.global_position))
+	
+	for occupied_position in occupied_positions:
+		astargrid.set_point_solid(occupied_position)
+		
+	
 	var path = astargrid.get_id_path(
 		tile_map.local_to_map(global_position),
 		tile_map.local_to_map(player.global_position)
 	)
+	
+	for occupied_position in occupied_positions:
+		astargrid.set_point_solid(occupied_position, false)
+		
 	var distance = path.size()
 	if distance > 6:
 		return
@@ -50,6 +68,7 @@ func move():
 	
 	if path.size() == 1:
 		print("I have arrived at my target")
+		battle_scene.show()
 		return
 	
 	if path.is_empty():

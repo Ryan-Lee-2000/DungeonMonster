@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://bv16qnxcopup3"]
+[gd_scene load_steps=10 format=4 uid="uid://bv16qnxcopup3"]
 
 [ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_qek0g"]
 [ext_resource type="Script" path="res://player.gd" id="2_226y8"]
 [ext_resource type="Texture2D" uid="uid://dhn0njlm3da6r" path="res://urizen_player_onebit_tileset.png" id="3_f67pk"]
 [ext_resource type="Script" path="res://enemy.gd" id="4_h2xhg"]
-[ext_resource type="Script" path="res://battle_scene.gd" id="5_gyq44"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2usj8"]
 texture = ExtResource("1_qek0g")
@@ -3369,13 +3368,6 @@ margin = Rect2(-1, -1, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7xs"]
 size = Vector2(12, 12)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh24y"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -3407,32 +3399,29 @@ texture = SubResource("AtlasTexture_326t7")
 
 [node name="Area2D" type="Area2D" parent="Enemy"]
 
-[node name="BattleScene" type="CanvasLayer" parent="Enemy/Area2D"]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
 shape = SubResource("RectangleShape2D_2t7xs")
 
-[node name="BattleScene" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("5_gyq44")
+[node name="Enemy2" type="Node2D" parent="." groups=["Enemies"]]
+position = Vector2(-42, -42)
+script = ExtResource("4_h2xhg")
 
-[node name="MarginContainer" type="MarginContainer" parent="BattleScene"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+[node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
+texture = SubResource("AtlasTexture_326t7")
 
-[node name="PanelContainer" type="PanelContainer" parent="BattleScene/MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wh24y")
+[node name="Area2D" type="Area2D" parent="Enemy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Area2D"]
+shape = SubResource("RectangleShape2D_2t7xs")
+
+[node name="Enemy3" type="Node2D" parent="." groups=["Enemies"]]
+position = Vector2(42, -54)
+script = ExtResource("4_h2xhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy3"]
+texture = SubResource("AtlasTexture_326t7")
+
+[node name="Area2D" type="Area2D" parent="Enemy3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Area2D"]
+shape = SubResource("RectangleShape2D_2t7xs")
