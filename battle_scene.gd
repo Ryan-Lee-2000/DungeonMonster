@@ -18,8 +18,7 @@ func _process(_delta) -> void:
 	pass
 
 func preparefield():
-	for x in range(0,30):
-		showText("Hey what's up lmao")
+	showText("Placeholder Text, Hello!")
 	pass
 
 func showText(textToShow):
