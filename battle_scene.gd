@@ -1,15 +1,17 @@
 extends CanvasLayer
 
-const TextDisplay = preload("res://text_line.tscn")
+#const TextDisplay = preload("res://text_line.tscn")
 
 var battle_start = false
 @onready var screen = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer
-@onready var scroll = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer
-
-var lineLimit = 20 #number of lines allowed to be displayed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
+	if Input.is_action_just_pressed("close"):
+		print("Close was pressed")
+		self.hide()
+		battle_start = false
+		return
 	if self.visible and not battle_start:
 		print("The battle has begun!")
 		battle_start = true
@@ -18,15 +20,4 @@ func _process(_delta) -> void:
 	pass
 
 func preparefield():
-	showText("Placeholder Text, Hello!")
 	pass
-
-func showText(textToShow):
-	var text = TextDisplay.instantiate()
-	text.set_text(textToShow)
-	screen.add_child(text)
-
-func cleaningDuty():
-	var childCount = screen.get_children()
-	if(childCount.size() > lineLimit):
-		screen.get_child(0).free()

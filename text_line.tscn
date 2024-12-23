@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cc86hdhrgihnc"]
-
-[node name="Text_Line" type="Label"]
-custom_minimum_size = Vector2(100, 0)
-text = "This is an example of a text line that could possibly happen in this code. It may seem odd but this is a testing line to ensure we are able to understand what the code is doing. The reason this line is so long is so we can know the wrapping works and if a long line such as this is feasible."
-autowrap_mode = 3

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d1cl6glfsps1i"]
+[gd_scene format=3 uid="uid://bhi06aug4mpa5"]
 
 [node name="Text_Display" type="Label"]
 custom_minimum_size = Vector2(100, 0)

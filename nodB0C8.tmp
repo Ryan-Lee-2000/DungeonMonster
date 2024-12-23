@@ -3465,53 +3465,45 @@ size_flags_horizontal = 3
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 168
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 168
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 100
 
 [node name="TextureRect" type="TextureRect" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("6_t8ovr")
 
 [node name="Label" type="Label" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer/MarginContainer/TextureRect"]
-visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
-offset_left = -3.0
+offset_left = 13.0
 offset_top = 99.0
-offset_right = 97.0
+offset_right = 113.0
 offset_bottom = 122.0
 text = "Skeleton"
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
 [node name="MarginContainer2" type="MarginContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 168
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 168
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 100
 
 [node name="TextureRect" type="TextureRect" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer/MarginContainer2"]
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("7_6xjhx")
 
 [node name="Label" type="Label" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer/MarginContainer2/TextureRect"]
-visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
-offset_left = 4.0
-offset_top = 103.0
-offset_right = 104.0
-offset_bottom = 126.0
+offset_left = 13.0
+offset_top = 99.0
+offset_right = 113.0
+offset_bottom = 122.0
 text = "Goblin"
 horizontal_alignment = 1
 

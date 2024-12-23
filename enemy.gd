@@ -68,6 +68,8 @@ func move():
 	
 	if path.size() == 1:
 		print("I have arrived at my target")
+		###We need a way to pause the game when an encounter occurs so the user knows
+		###who they are battling. (Possibility using an animation?
 		battle_scene.show()
 		return
 	

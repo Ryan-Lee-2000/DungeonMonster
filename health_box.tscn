@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6qmvqqrisxyf"]
+
+[ext_resource type="Script" path="res://player_health_box.gd" id="1_ut7cu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe0r3"]
+bg_color = Color(0.295867, 0.295867, 0.295866, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amumq"]
+bg_color = Color(0.739497, 0.0837121, 0.185282, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+
+[node name="HealthBox" type="VBoxContainer"]
+offset_right = 306.0
+offset_bottom = 87.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ut7cu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Player
+"
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_qe0r3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_amumq")
+value = 100.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "100/100"
