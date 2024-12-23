@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bv16qnxcopup3"]
+[gd_scene load_steps=19 format=4 uid="uid://bv16qnxcopup3"]
 
 [ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_qek0g"]
 [ext_resource type="Script" path="res://player.gd" id="2_226y8"]
@@ -3380,6 +3380,12 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4jrg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ighq0"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m01p4"]
 bg_color = Color(0, 0, 0, 1)
 border_width_top = 1
@@ -3428,6 +3434,7 @@ texture = SubResource("AtlasTexture_326t7")
 shape = SubResource("RectangleShape2D_2t7xs")
 
 [node name="BattleScene" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("5_gyq44")
 
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene"]
@@ -3490,6 +3497,13 @@ horizontal_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4jrg")
+
+[node name="Panel" type="Panel" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ighq0")
 
 [node name="MarginContainer2" type="MarginContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/Monster_split/HBoxContainer"]
 layout_mode = 2
