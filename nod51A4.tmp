@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=4 uid="uid://bv16qnxcopup3"]
+[gd_scene load_steps=19 format=4 uid="uid://bv16qnxcopup3"]
 
 [ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_qek0g"]
-[ext_resource type="PackedScene" uid="uid://c1d5f8ki51lnc" path="res://player.tscn" id="2_q1c8b"]
-[ext_resource type="PackedScene" uid="uid://cvn2ccdg2qf04" path="res://enemy.tscn" id="3_hau5k"]
+[ext_resource type="Script" path="res://player.gd" id="2_226y8"]
+[ext_resource type="Texture2D" uid="uid://dhn0njlm3da6r" path="res://urizen_player_onebit_tileset.png" id="3_f67pk"]
+[ext_resource type="Script" path="res://enemy.gd" id="4_h2xhg"]
 [ext_resource type="Script" path="res://battle_scene.gd" id="5_gyq44"]
 [ext_resource type="Texture2D" uid="uid://daanowaxghuxc" path="res://Sprites/Skeleton.tres" id="6_t8ovr"]
 [ext_resource type="Texture2D" uid="uid://vtg3scv56xsl" path="res://Sprites/Goblin.tres" id="7_6xjhx"]
-[ext_resource type="Script" path="res://health_container.gd" id="8_lp12u"]
+[ext_resource type="PackedScene" uid="uid://c6qmvqqrisxyf" path="res://health_box.tscn" id="8_wlp8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2usj8"]
 texture = ExtResource("1_qek0g")
@@ -3359,6 +3360,18 @@ custom_data_layer_1/name = ""
 custom_data_layer_1/type = 0
 sources/0 = SubResource("TileSetAtlasSource_2usj8")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv6a8"]
+atlas = ExtResource("3_f67pk")
+region = Rect2(469, 118, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_326t7"]
+atlas = ExtResource("1_qek0g")
+region = Rect2(339, 105, 12, 12)
+margin = Rect2(-1, -1, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7xs"]
+size = Vector2(12, 12)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh24y"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
@@ -3378,6 +3391,12 @@ bg_color = Color(0, 0, 0, 1)
 border_width_top = 1
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odqfu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -3385,21 +3404,34 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAQAAAAAAABAAAAAAAQAAAAAAACAAAAAAAQAAA
 tile_set = SubResource("TileSet_48wby")
 rendering_quadrant_size = 12
 
-[node name="Player" parent="." instance=ExtResource("2_q1c8b")]
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(18, -6)
+script = ExtResource("2_226y8")
 
-[node name="Enemy" parent="." instance=ExtResource("3_hau5k")]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("AtlasTexture_fv6a8")
 
-[node name="Enemy2" parent="." instance=ExtResource("3_hau5k")]
-position = Vector2(18, -54)
+[node name="Camera2D" type="Camera2D" parent="Player/Sprite2D"]
+zoom = Vector2(5, 5)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_hau5k")]
-position = Vector2(102, -42)
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+target_position = Vector2(0, 12)
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="Enemy4" parent="." instance=ExtResource("3_hau5k")]
-position = Vector2(102, 30)
+[node name="Enemy" type="Node2D" parent="." groups=["Enemies"]]
+position = Vector2(-66, -54)
+script = ExtResource("4_h2xhg")
 
-[node name="Enemy5" parent="." instance=ExtResource("3_hau5k")]
-position = Vector2(-66, 42)
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+texture = SubResource("AtlasTexture_326t7")
+
+[node name="Area2D" type="Area2D" parent="Enemy"]
+
+[node name="BattleScene" type="CanvasLayer" parent="Enemy/Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
+shape = SubResource("RectangleShape2D_2t7xs")
 
 [node name="BattleScene" type="CanvasLayer" parent="."]
 visible = false
@@ -3503,6 +3535,25 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_m01p4")
 
-[node name="HealthContainer" type="HBoxContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-script = ExtResource("8_lp12u")
+
+[node name="HealthBox" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource("8_wlp8m")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_odqfu")
+
+[node name="Label" type="Label" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Turn
+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HealthBox2" parent="BattleScene/MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource("8_wlp8m")]
+layout_mode = 2

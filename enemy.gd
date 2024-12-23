@@ -3,6 +3,9 @@ extends Node2D
 @onready var tile_map = $"../TileMapLayer"
 @onready var battle_scene = $"../BattleScene"
 
+var enemy_stats = Stats.new()
+var check = true
+
 var astargrid: AStarGrid2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +33,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
+	if check:
+		check = false
+		initialize_creature()
 	if Input.is_action_just_pressed("up"):
 		move()
 	elif Input.is_action_just_pressed("down"):
@@ -38,7 +44,11 @@ func _process(_delta) -> void:
 		move()
 	elif Input.is_action_just_pressed("right"):
 		move()
-
+		
+func initialize_creature():
+	enemy_stats.init_testing_creature("Goblin")
+	pass
+	
 func move():
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	var occupied_positions = []
@@ -68,6 +78,8 @@ func move():
 	
 	if path.size() == 1:
 		print("I have arrived at my target")
+		battle_scene.updateEnemyContent(self)
+		battle_scene.updateEnemy(enemy_stats)
 		###We need a way to pause the game when an encounter occurs so the user knows
 		###who they are battling. (Possibility using an animation?
 		battle_scene.show()

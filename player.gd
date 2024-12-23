@@ -4,7 +4,16 @@ extends Node2D
 
 @onready var raycast = $RayCast2D
 
+@onready var battle_scene = $"../BattleScene"
+
+var player_stats = Stats.new()
+var check = true
+
 func _process(_delta) -> void:
+	if check:
+		check = false
+		initialize_creature()
+		
 	if Input.is_action_just_pressed("up"):
 		move(Vector2.UP)
 	elif Input.is_action_just_pressed("down"):
@@ -31,3 +40,8 @@ func move(direction: Vector2):
 		return
 	
 	global_position = tile_map.map_to_local(target_tile)
+
+func initialize_creature():
+	player_stats.init_testing_creature("Skeleton")
+	battle_scene.updatePlayer(player_stats)
+	pass

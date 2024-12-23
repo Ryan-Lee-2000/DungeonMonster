@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvn2ccdg2qf04"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_1eimk"]
+[ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="2_7aqjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_326t7"]
+atlas = ExtResource("2_7aqjc")
+region = Rect2(339, 105, 12, 12)
+margin = Rect2(-1, -1, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7xs"]
+size = Vector2(12, 12)
+
+[node name="Enemy" type="Node2D" groups=["Enemies"]]
+position = Vector2(-66, -54)
+script = ExtResource("1_1eimk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_326t7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="BattleScene" type="CanvasLayer" parent="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2t7xs")

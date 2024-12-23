@@ -1,8 +1,8 @@
 extends VBoxContainer
 
-@onready var nameLabel = $Name
-@onready var healthBar = $HealthBar
-@onready var healthLabel = $Health
+@onready var nameLabel = $"MarginContainer/VBoxContainer/Name"
+@onready var healthBar = $"MarginContainer/VBoxContainer/HealthBar"
+@onready var healthLabel = $"MarginContainer/VBoxContainer/Health"
 #@onready var manaBar = $ManaBar
 #@onready var manaLabel = $Mana
 
@@ -13,11 +13,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	pass
 
-func editNameLabel(name):
-	nameLabel.set_text(name)
+func editNameLabel(name_label):
+	nameLabel.text = str(name_label)
 
 func setHealthBar(health):
 	healthBar.set_max(health)

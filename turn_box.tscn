@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5yuue73ti1d0"]
+
+[ext_resource type="Script" path="res://turn_box.gd" id="1_0xtuj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odqfu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="TurnBox" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_odqfu")
+script = ExtResource("1_0xtuj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Turn
+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
