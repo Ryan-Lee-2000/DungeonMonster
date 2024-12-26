@@ -3,8 +3,15 @@ extends CanvasLayer
 #const TextDisplay = preload("res://text_line.tscn")
 @onready var healthContainer = $MarginContainer/BackgroundColor/VBoxContainer/PanelContainer/HealthContainer
 @onready var enemy_content = $"../Player"
-
 @onready var player_scene = $"../Player"
+@onready var player_icon = $MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/MarginContainer/TextureRect
+@onready var enemy_icon = $MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/MarginContainer2/TextureRect
+@onready var result_screen = $"MarginContainer/Result Screen"
+@onready var overall_screen = $MarginContainer
+
+const result_screen_scene = preload("res://result_screen.tscn")
+
+@onready var timer = $Timer
 
 var player: Stats
 var enemy: Stats
@@ -57,35 +64,42 @@ func start():
 	pass
 
 func preparefield():
+	player_icon.texture = load(player.sprite_data)
+	enemy_icon.texture = load(enemy.sprite_data)
 	healthContainer.prep_health_boxes(player, enemy)
 	pass
 
 func battle():
-	var current_player_life = player.life
-	var current_enemy_life = enemy.life
 	var turn_order = Battle_handler.new().get_turn_order(player,enemy)
-	while current_enemy_life > 0 and current_player_life > 0:
+	while enemy.current_hp > 0 and player.current_hp > 0:
 		healthContainer.update_turn(turn)
 		for attacker in turn_order:
 			if attacker == player:
-				current_enemy_life -= player.power - (enemy.def / 2)
-				healthContainer.update_Healthbox(2, int(current_enemy_life))
-				if current_enemy_life <= 0:
+				enemy.current_hp -= max(player.power - (enemy.def / 2), 1)
+				healthContainer.update_Healthbox(2, int(enemy.current_hp))
+				if enemy.current_hp <= 0:
 					print("Enemy life has been depleted!")
 					break
 			else:
-				current_player_life -= enemy.power - (enemy.def / 2)
-				healthContainer.update_Healthbox(0, int(current_player_life))
-				if current_player_life <= 0:
+				player.current_hp -= max(enemy.power - (enemy.def / 2), 1)
+				healthContainer.update_Healthbox(0, int(player.current_hp))
+				if player.current_hp <= 0:
 					break
+			timer.start()
 			await get_tree().create_timer(gameSpeed).timeout
 		turn += 1
 	await get_tree().create_timer(gameSpeed).timeout
-	if current_player_life > 0:
+	
+	if player.current_hp > 0:
 		print("battle has ended")
 		enemy_content.queue_free()
-		self.hide()
 		battle_start = false
-		player_scene.get_tree().paused = false
+		overall_screen.add_child(result_screen_scene.instantiate())
+		overall_screen.get_child(1).showResult(1, player_scene)
+		#self.hide()
+		#player_scene.get_tree().paused = false
 	pass
-	
+
+func clearResult():
+	overall_screen.remove_child(overall_screen.get_child(1))
+	pass

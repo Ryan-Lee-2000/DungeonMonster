@@ -6,17 +6,17 @@ extends Node2D
 
 @onready var battle_scene = $"../BattleScene"
 
+@onready var sprite = $Sprite2D
+
 var player_stats = Stats.new()
 var check = true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	initialize_creature()
 	pass # Replace with function body.
 
 func _process(_delta) -> void:
-	if check:
-		check = false
-		initialize_creature()
 	if Input.is_action_just_pressed("up"):
 		move(Vector2.UP)
 	elif Input.is_action_just_pressed("down"):
@@ -47,4 +47,5 @@ func move(direction: Vector2):
 func initialize_creature():
 	player_stats.init_testing_creature("Skeleton")
 	battle_scene.updatePlayer(player_stats)
+	sprite.texture = load(player_stats.sprite_data)
 	pass

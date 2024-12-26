@@ -2,6 +2,7 @@ extends Node2D
 @onready var player = $"../Player"
 @onready var tile_map = $"../TileMapLayer"
 @onready var battle_scene = $"../BattleScene"
+@onready var sprite = $Sprite2D
 
 var enemy_stats = Stats.new()
 var check = true
@@ -46,7 +47,10 @@ func _process(_delta) -> void:
 		move()
 		
 func initialize_creature():
-	enemy_stats.init_testing_creature("Goblin")
+	#enemy_stats.init_testing_creature("Goblin")
+	enemy_stats.init_testing_creature(Species.new().give_random_species())
+	sprite.texture = load(enemy_stats.sprite_data)
+	enemy_stats.is_mob()
 	pass
 	
 func move():

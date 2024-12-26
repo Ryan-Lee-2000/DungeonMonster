@@ -20,12 +20,12 @@ func prep_health_boxes(player: Stats, enemy: Stats):
 	print(player.nickname)
 	
 	get_child(0).editNameLabel(player.nickname)
-	get_child(0).setHealthBar(player.life)
+	get_child(0).setHealthBar(player.current_hp, player.life)
 	
 	get_child(1).update_turn(1)
 	
 	get_child(2).editNameLabel(enemy.nickname)
-	get_child(2).setHealthBar(enemy.life)
+	get_child(2).setHealthBar(enemy.current_hp, enemy.life)
 	
 	pass
 

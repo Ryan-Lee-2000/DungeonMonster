@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://bv16qnxcopup3"]
+[gd_scene load_steps=13 format=4 uid="uid://bv16qnxcopup3"]
 
 [ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_qek0g"]
 [ext_resource type="PackedScene" uid="uid://c1d5f8ki51lnc" path="res://player.tscn" id="2_q1c8b"]
 [ext_resource type="PackedScene" uid="uid://cvn2ccdg2qf04" path="res://enemy.tscn" id="3_hau5k"]
+[ext_resource type="Texture2D" uid="uid://b54b1cynti86d" path="res://Sprites/Blank_texture.tres" id="5_6hbf6"]
 [ext_resource type="Script" path="res://battle_scene.gd" id="5_gyq44"]
-[ext_resource type="Texture2D" uid="uid://daanowaxghuxc" path="res://Sprites/Skeleton.tres" id="6_t8ovr"]
-[ext_resource type="Texture2D" uid="uid://vtg3scv56xsl" path="res://Sprites/Goblin.tres" id="7_6xjhx"]
 [ext_resource type="Script" path="res://health_container.gd" id="8_lp12u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2usj8"]
@@ -3406,6 +3405,8 @@ process_mode = 1
 visible = false
 script = ExtResource("5_gyq44")
 
+[node name="Timer" type="Timer" parent="BattleScene"]
+
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -3418,6 +3419,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
@@ -3425,22 +3427,27 @@ theme_override_constants/margin_bottom = 50
 
 [node name="BackgroundColor" type="PanelContainer" parent="BattleScene/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wh24y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BattleScene/MarginContainer/BackgroundColor"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Monster_split" type="HBoxContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 168
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 168
@@ -3450,7 +3457,7 @@ theme_override_constants/margin_bottom = 100
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_t8ovr")
+texture = ExtResource("5_6hbf6")
 
 [node name="Label" type="Label" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/MarginContainer/TextureRect"]
 visible = false
@@ -3466,6 +3473,7 @@ horizontal_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r4jrg")
 
 [node name="Panel" type="Panel" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/PanelContainer"]
@@ -3477,6 +3485,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ighq0")
 [node name="MarginContainer2" type="MarginContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 168
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 168
@@ -3485,7 +3494,7 @@ theme_override_constants/margin_bottom = 100
 [node name="TextureRect" type="TextureRect" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture = ExtResource("7_6xjhx")
+texture = ExtResource("5_6hbf6")
 
 [node name="Label" type="Label" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/Monster_split/HBoxContainer/MarginContainer2/TextureRect"]
 visible = false
@@ -3502,8 +3511,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_m01p4")
 
 [node name="HealthContainer" type="HBoxContainer" parent="BattleScene/MarginContainer/BackgroundColor/VBoxContainer/PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("8_lp12u")

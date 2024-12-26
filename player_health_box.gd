@@ -19,10 +19,10 @@ func _process(_delta) -> void:
 func editNameLabel(name_label):
 	nameLabel.text = str(name_label)
 
-func setHealthBar(health):
+func setHealthBar(current_health, health):
 	healthBar.set_max(health)
-	healthBar.set_value(health)
-	healthLabel.set_text(str(health) + "/" + str(health))
+	healthBar.set_value(current_health)
+	healthLabel.set_text(str(current_health) + "/" + str(health))
 
 #func setManaBar(mana):
 	#if(mana <= 0):

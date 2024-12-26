@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b54b1cynti86d"]
+
+[ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_xx6vc"]
+
+[resource]
+atlas = ExtResource("1_xx6vc")
+region = Rect2(209, 1, 12, 12)
