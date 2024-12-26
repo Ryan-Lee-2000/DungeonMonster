@@ -1,8 +1,10 @@
 extends CanvasLayer
 
 #const TextDisplay = preload("res://text_line.tscn")
-@onready var healthContainer = $MarginContainer/PanelContainer/VBoxContainer/PanelContainer/HealthContainer
+@onready var healthContainer = $MarginContainer/BackgroundColor/VBoxContainer/PanelContainer/HealthContainer
 @onready var enemy_content = $"../Player"
+
+@onready var player_scene = $"../Player"
 
 var player: Stats
 var enemy: Stats
@@ -13,9 +15,14 @@ var battle_start = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
+	if self.visible:
+		player_scene.get_tree().paused = true
+	else:
+		player_scene.get_tree().paused = false
 	if Input.is_action_just_pressed("close"):
 		print("Close was pressed")
 		self.hide()
+		player_scene.get_tree().paused = false
 		battle_start = false
 		return
 	if Input.is_action_just_pressed("debug_open_battle_scene"):
@@ -79,5 +86,6 @@ func battle():
 		enemy_content.queue_free()
 		self.hide()
 		battle_start = false
+		player_scene.get_tree().paused = false
 	pass
 	

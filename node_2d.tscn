@@ -3390,7 +3390,7 @@ rendering_quadrant_size = 12
 [node name="Enemy" parent="." instance=ExtResource("3_hau5k")]
 
 [node name="Enemy2" parent="." instance=ExtResource("3_hau5k")]
-position = Vector2(18, -54)
+position = Vector2(-42, -42)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_hau5k")]
 position = Vector2(102, -42)
@@ -3402,6 +3402,8 @@ position = Vector2(102, 30)
 position = Vector2(-66, 42)
 
 [node name="BattleScene" type="CanvasLayer" parent="."]
+process_mode = 1
+visible = false
 script = ExtResource("5_gyq44")
 
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene"]
