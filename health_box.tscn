@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6qmvqqrisxyf"]
+[gd_scene load_steps=5 format=3 uid="uid://c6qmvqqrisxyf"]
 
 [ext_resource type="Script" path="res://player_health_box.gd" id="1_ut7cu"]
+[ext_resource type="FontFile" uid="uid://b00mikkf8k46o" path="res://Fonts/m5x7.ttf" id="2_phqus"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe0r3"]
 bg_color = Color(0.295867, 0.295867, 0.295866, 1)
@@ -37,7 +38,8 @@ size_flags_vertical = 4
 
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_phqus")
+theme_override_font_sizes/font_size = 48
 text = "Player
 "
 
@@ -55,5 +57,6 @@ show_percentage = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_phqus")
+theme_override_font_sizes/font_size = 32
 text = "100/100"

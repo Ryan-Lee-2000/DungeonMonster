@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5yuue73ti1d0"]
+[gd_scene load_steps=4 format=3 uid="uid://b5yuue73ti1d0"]
 
 [ext_resource type="Script" path="res://turn_box.gd" id="1_0xtuj"]
+[ext_resource type="FontFile" uid="uid://b00mikkf8k46o" path="res://Fonts/m5x7.ttf" id="2_hrdt1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odqfu"]
 bg_color = Color(0, 0, 0, 1)
@@ -15,7 +16,8 @@ script = ExtResource("1_0xtuj")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_hrdt1")
+theme_override_font_sizes/font_size = 80
 text = "Turn
 1"
 horizontal_alignment = 1

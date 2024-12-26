@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Enemies=""
 
+[gui]
+
+theme/default_font_subpixel_positioning=0
+
 [input]
 
 up={

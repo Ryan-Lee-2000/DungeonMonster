@@ -8,16 +8,22 @@ extends Node2D
 
 @onready var sprite = $Sprite2D
 
+@onready var player_camera = $Sprite2D/Camera2D
+
 var player_stats = Stats.new()
 var check = true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	initialize_creature()
+	prepareCamera()
 	pass # Replace with function body.
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("up"):
+		
+		#player_camera.set_enabled(true)
+		#player_camera.make_current()
 		move(Vector2.UP)
 	elif Input.is_action_just_pressed("down"):
 		move(Vector2.DOWN)
@@ -25,6 +31,11 @@ func _process(_delta) -> void:
 		move(Vector2.LEFT)
 	elif Input.is_action_just_pressed("right"):
 		move(Vector2.RIGHT)
+	pass
+
+func prepareCamera():
+	player_camera.set_enabled(true)
+	player_camera.make_current()
 	pass
 
 func move(direction: Vector2):
