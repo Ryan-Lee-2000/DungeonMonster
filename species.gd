@@ -25,8 +25,8 @@ func get_species(s_name: String):
 	return species_dict[s_name]
 
 func give_random_species():
-	#return species_dict.keys().pick_random()
-	return "Skeleton"
+	return species_dict.keys().pick_random()
+	#return "Skeleton"
 
 func display_species(s_name: String):
 	prints(species_dict[s_name])

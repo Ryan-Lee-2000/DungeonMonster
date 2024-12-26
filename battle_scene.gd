@@ -11,8 +11,6 @@ extends CanvasLayer
 
 const result_screen_scene = preload("res://result_screen.tscn")
 
-@onready var timer = $Timer
-
 var player: Stats
 var enemy: Stats
 var turn = 1
@@ -85,7 +83,6 @@ func battle():
 				healthContainer.update_Healthbox(0, int(player.current_hp))
 				if player.current_hp <= 0:
 					break
-			timer.start()
 			await get_tree().create_timer(gameSpeed).timeout
 		turn += 1
 	await get_tree().create_timer(gameSpeed).timeout
@@ -98,6 +95,12 @@ func battle():
 		overall_screen.get_child(1).showResult(1, player_scene)
 		#self.hide()
 		#player_scene.get_tree().paused = false
+	else:
+		print("battle has ended, and you've lost")
+		enemy_content.queue_free()
+		battle_start = false
+		overall_screen.add_child(result_screen_scene.instantiate())
+		overall_screen.get_child(1).showResult(0, player_scene)
 	pass
 
 func clearResult():

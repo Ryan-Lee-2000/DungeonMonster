@@ -14,13 +14,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("I'm running")
 	if Input.is_action_just_pressed("Continue"):
 		if not inside:
 			return
-		print("I'm being pressed")
+		inside = false
 		if gameover.visible == true:
-			gameover.hide()
+			#gameover.hide()
+			get_tree().quit()
+			return
 		if victory.visible == true:
 			victory.hide()
 		self.hide()
@@ -31,12 +32,10 @@ func _process(delta: float) -> void:
 
 func showResult(result: int, player: Node):
 	inside = true
-	prints("Hello ", result)
 	player_data = player
 	self.show()
 	if result == 0:
 		gameover.show()
 	elif result == 1:
 		victory.show()
-	prints(self.visible, gameover.visible, victory.visible)
 	pass

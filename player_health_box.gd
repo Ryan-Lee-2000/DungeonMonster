@@ -38,11 +38,10 @@ func updatehealthBar(health):
 	var maxHealth = healthBar.get_max()
 	print(health)
 	print(maxHealth)
-	healthLabel.set_text(str(health) + "/" + str(maxHealth))
-	if(health < 0):
-		healthBar.set_value(0)
-		return
-	healthBar.set_value(health)
+	healthLabel.set_text(str(max(health, 0)) + "/" + str(maxHealth))
+	var tween = create_tween()
+	tween.tween_property(healthBar, "value", max(health, 0), 0.8)
+	#healthBar.set_value(health)
 
 #func updateManaBar(mana):
 	#var maxMana = manaBar.get_max()

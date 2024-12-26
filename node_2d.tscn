@@ -3405,8 +3405,6 @@ process_mode = 1
 visible = false
 script = ExtResource("5_gyq44")
 
-[node name="Timer" type="Timer" parent="BattleScene"]
-
 [node name="MarginContainer" type="MarginContainer" parent="BattleScene"]
 anchors_preset = 15
 anchor_right = 1.0
