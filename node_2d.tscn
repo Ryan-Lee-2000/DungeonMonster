@@ -188,12 +188,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("8_r8xfu")
 
-[node name="Label" type="Label" parent="Menu/CharacterScreen/HBoxContainer/MarginContainer/Monster_Stats"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vceua")
-theme_override_font_sizes/font_size = 32
-text = "Stats"
-horizontal_alignment = 1
-
 [connection signal="pressed" from="Menu/MainMenu/VBoxContainer/PanelContainer/Start_button" to="Menu" method="_on_button_pressed"]
 [connection signal="pressed" from="Menu/MainMenu/VBoxContainer/PanelContainer2/Character_Button" to="Menu" method="_on_character_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0dlww3m6fpag"]
+
+[ext_resource type="FontFile" uid="uid://b00mikkf8k46o" path="res://Fonts/m5x7.ttf" id="1_qqj2j"]
+
+[node name="Stats_label" type="Label"]
+theme_override_fonts/font = ExtResource("1_qqj2j")
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+horizontal_alignment = 1

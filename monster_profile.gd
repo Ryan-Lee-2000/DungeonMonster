@@ -20,6 +20,4 @@ func prepareMonsterProfile():
 	nicknameLabel.text = "Name: " + str(player_stats.nickname)
 	speciesLabel.text = str(player_stats.species[0])
 	sprite.texture = load(player_stats.sprite_data)
-	print(player_stats.display_stats())
-	print(player_stats.species)
 	pass
