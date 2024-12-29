@@ -10,12 +10,17 @@ extends Node2D
 
 @onready var player_camera = $Sprite2D/Camera2D
 
-var player_stats = Stats.new()
+@onready var main_node = $"../../"
+
+var player_stats: Stats
 var check = true
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	initialize_creature()
+	#initialize_creature()
+	player_stats = main_node.player_stats
+	battle_scene.updatePlayer(player_stats)
+	sprite.texture = load(player_stats.sprite_data)
 	prepareCamera()
 	pass # Replace with function body.
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhml4shu80oj7"]
+
+[ext_resource type="Script" path="res://stat_box.gd" id="1_5qqa1"]
+[ext_resource type="FontFile" uid="uid://b00mikkf8k46o" path="res://Fonts/m5x7.ttf" id="2_fclcg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb6mm"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6slu4"]
+bg_color = Color(0.894118, 0.0392157, 0.141176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="Stat_Box" type="HBoxContainer"]
+script = ExtResource("1_5qqa1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_fclcg")
+theme_override_font_sizes/font_size = 16
+text = "LIFE"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_mb6mm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6slu4")
+max_value = 999.0
+value = 500.0
+show_percentage = false

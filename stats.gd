@@ -42,6 +42,10 @@ func display_stats():
 	
 	return result
 
+func get_stats():
+	var stat_array = [life, power, intel, skill, def, spd]
+	return stat_array
+
 func is_mob():
 	life *= 0.8
 	current_hp = life
