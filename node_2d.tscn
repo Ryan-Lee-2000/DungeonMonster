@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv16qnxcopup3"]
+[gd_scene load_steps=15 format=3 uid="uid://bv16qnxcopup3"]
 
 [ext_resource type="Script" path="res://main_node.gd" id="1_mcgdi"]
 [ext_resource type="Texture2D" uid="uid://eet1xxqe73u6" path="res://urizen_onebit_tileset__v1d1.png" id="1_qek0g"]
 [ext_resource type="FontFile" uid="uid://b00mikkf8k46o" path="res://Fonts/m5x7.ttf" id="3_vceua"]
 [ext_resource type="Script" path="res://menu.gd" id="4_8ueqa"]
+[ext_resource type="Script" path="res://addons/godot_card_layout/layouts/hand_layout/gcard_hand_layout.gd" id="5_82fts"]
 [ext_resource type="Script" path="res://character_screen.gd" id="5_esyso"]
 [ext_resource type="Script" path="res://monster_profile.gd" id="5_i804a"]
 [ext_resource type="Texture2D" uid="uid://daanowaxghuxc" path="res://Sprites/Skeleton.tres" id="6_q0ahh"]
+[ext_resource type="Texture2D" uid="uid://ca1pbm4f53kww" path="res://Sprites/card_template1.png" id="6_wwlx8"]
 [ext_resource type="Script" path="res://monster_stats.gd" id="8_r8xfu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7t87"]
@@ -65,6 +67,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g7t87")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainMenu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -102,6 +105,7 @@ icon = SubResource("AtlasTexture_cynys")
 flat = true
 
 [node name="Label" type="Label" parent="Menu/MainMenu"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -109,6 +113,16 @@ theme_override_constants/line_spacing = 1
 theme_override_fonts/font = SubResource("FontVariation_6yoe8")
 theme_override_font_sizes/font_size = 16
 text = "A game by Sovora"
+
+[node name="GCardHandLayout" type="Control" parent="Menu/MainMenu"]
+layout_mode = 2
+script = ExtResource("5_82fts")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/MainMenu/GCardHandLayout"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_wwlx8")
 
 [node name="CharacterScreen" type="PanelContainer" parent="Menu"]
 visible = false
